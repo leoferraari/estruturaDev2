@@ -1,18 +1,5 @@
 <?php
-//require('autoload.php');
-require('src/Link.class.php');
-require('src/Title.class.php');
-require('src/Head.class.php');
-require('src/Td.class.php');
-require('src/Tr.class.php');
-require('src/Table.class.php');
-require('src/Script.class.php');
-require('src/Ul.class.php');
-require('src/Li.class.php');
-require('src/Paragrafo.class.php');
-require('src/Html.class.php');
-require('src/Th.class.php');
-require('src/Body.class.php');
+require('autoload.php');
 
 $aElementsLinkHead = [
     'href'        => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css', 
@@ -51,18 +38,11 @@ $aAttrTd2 = [
     'style'   => 'background-color: red'
 ];
 
-$sAttrTr1 = [
-    'style' => 'background-color: darkgray'
-];
+$sAttrTr1 = ['style' => 'background-color: darkgray'];
 
-$sAttrTr2 = [
-    'style' => 'background-color: green'
-];
+$sAttrTr2 = ['style' => 'background-color: green'];
 
-$sAttrTable = [
-    'border-collapese' => 'separate',
-   
-];
+$sAttrTable = ['border-collapese' => 'separate'];
 
 $sTd1 = new Td($aAttrTd1, 'Leonardo');
 $sTd2 = new Td($aAttrTd2, 'Ferrari');
@@ -73,13 +53,13 @@ $sTr2 = new Tr($sAttrTr2, [$sTd2, $sTd1]);
 $sTable = new Table($sAttrTable, [$sTr1, $sTr2]);
 
 $aComponentesBody = [
-    new Paragrafo('h1', 'Hello, world!', ['class' => 'paragraph', 
+    new Titulo('h1', 'Hello, world!', ['class' => 'paragraph', 
                                           'style'=> 'color: red']),
     new Script($aElementosScript),
     $sTable
     
 ];
-//Teste commit
+
 $sBody = new Body($aComponentesBody);
 
 echo new Html('en', $sHead, $sBody);

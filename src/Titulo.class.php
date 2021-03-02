@@ -1,11 +1,11 @@
 <?php
 
-class Paragrafo {
+class Titulo {
     private $type; //h1, h2...
     private $title;
     private $elements;
 
-    function Paragrafo($sType, $sTitle, $aElements = []) {
+    function Titulo($sType, $sTitle, $aElements = []) {
         $this->type = $sType;
         $this->title = $sTitle;
         $this->elements = $aElements;

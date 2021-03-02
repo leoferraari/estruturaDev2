@@ -1,7 +1,6 @@
 <?php
 spl_autoload_register(function($class) {
-    $arquivo = $_SERVER["DOCUMENT_ROOT"]
-    ."/estruturaDev2/src/".$class.".class.php";
+    $arquivo = $_SERVER["DOCUMENT_ROOT"]."/src/".$class.".class.php";
  
     if (file_exists($arquivo)) {
         require $arquivo;

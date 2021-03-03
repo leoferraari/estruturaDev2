@@ -59,16 +59,18 @@ $sImg = new Img(['src' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAAD
                  'width' => 400,
                  'height' => 400]);
 
+$sForm = new Form(['action' => '/action_page.php', 'method', 'POST'], [$sLabel, $sInputName]);
+
 $aComponentesBody = [
     new Titulo('h1', 'Hello, world!', ['class' => 'paragraph', 
-                                          'style'=> 'color: red']),
+                                       'style'=> 'color: red']),
     new Script($aElementosScript),
     $sTable,
     $sLabel,
     $sInputName,
     '<br>',
-    $sImg
-    
+    $sImg,
+    $sForm  
 ];
 
 $sBody = new Body($aComponentesBody);

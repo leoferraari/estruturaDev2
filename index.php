@@ -52,11 +52,16 @@ $sTr2 = new Tr($sAttrTr2, [$sTd2, $sTd1]);
 
 $sTable = new Table($sAttrTable, [$sTr1, $sTr2]);
 
+$sLabel = new Label('firstname', 'First Name');
+$sInputName = new Input(['type' => 'text', 'id' => 'firstname', 'name' => 'firstname']);
+
 $aComponentesBody = [
     new Titulo('h1', 'Hello, world!', ['class' => 'paragraph', 
                                           'style'=> 'color: red']),
     new Script($aElementosScript),
-    $sTable
+    $sTable,
+    $sLabel,
+    $sInputName
     
 ];
 

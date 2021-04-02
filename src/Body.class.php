@@ -3,7 +3,7 @@
 class Body {
     private $componentes;
 
-    function Body($aComponentes) {
+    function __construct($aComponentes) {
         $this->componentes = $aComponentes;
     }
 

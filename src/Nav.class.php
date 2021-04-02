@@ -3,7 +3,7 @@
 class Nav {
     private $componentes;
 
-    function Nav($aComponentes) {
+    function __construct($aComponentes) {
         $this->componentes = $aComponentes;
     }
 

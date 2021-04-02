@@ -1,10 +1,10 @@
 <?php
 
-class Footer {
+class Div {
     private $attributes;
     private $components;
 
-    function Footer($aAttributes, $aComponents) {
+    function Div($aAttributes, $aComponents) {
         $this->attributes = $aAttributes;
         $this->components = $aComponents;
     }
@@ -21,6 +21,6 @@ class Footer {
             $sComponents .= $value;
         }
         
-        return '<footer '.$sAttributes.'>'.$sComponents.'</footer>';
+        return '<div '.$sAttributes.'>'.$sComponents.'</div>';
     }
 }

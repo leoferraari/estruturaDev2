@@ -1,19 +1,19 @@
 <?php
 
 class Ul {
-    private $lista = array();
+    private $itens;
 
-    public function addLi($pLi) {
-        $this->lista[] = $pLi;
+    public function __construct($aItens) {
+        $this->itens = $aItens;
     }
 
     public function __toString() {
-        $vUl = '<ul>';
-        foreach ($this->lista as $valor) {
-            $vUl .= $valor;
+        $sUl = '<ul>';
+        foreach ($this->itens as $value) {
+            $sUl .= $value;
         }
-        $vUl .= '</ul>';
-        return $vUl;
+        $sUl .= '</ul>';
+        return $sUl;
     }
 
 }

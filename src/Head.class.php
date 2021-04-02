@@ -2,11 +2,9 @@
 
 class Head {
     private $elements;
-    private $title;
 
-    function Head($aElements, $sTitle) {
+    function __construct($aElements) {
         $this->elements = $aElements;
-        $this->title = $sTitle;
     }
 
     public function __toString() {
@@ -15,8 +13,6 @@ class Head {
         foreach ($this->elements as $value) {
             $sElementos .= $value;
         }
-
-        $sElementos .= $this->title;
 
         return '<head>'.$sElementos.'</head>';
     }

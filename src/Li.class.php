@@ -1,16 +1,20 @@
 <?php
 
 class Li {
+    private $attributes;
     private $txt;
-    private $class;
 
-    function Li($pTxt,$pClass) {
-        $this->txt   = $pTxt;
-        $this->class = $pClass;
+    function Li($aAttributes, $aTxt) {
+        $this->attributes = $aAttributes;
+        $this->txt = $aTxt;
     }
 
-    function __toString() {
-        return '<li class='.$this->class
-        .'>'.$this->txt.'</li>';
+    public function __toString() {
+        $sAttributes = '';
+        foreach ($this->attributes as $attr => $value) {
+            $sAttributes .= $attr.'="'.$value.'" ';
+        }
+        
+        return '<li '.$sAttributes.'>'.$this->txt.'</li>';
     }
 }

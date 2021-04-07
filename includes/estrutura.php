@@ -5,7 +5,7 @@ require_once 'includes/CRUDMenu.php';
 function conexao() {
       $sHost = 'localhost';
       $sPort = '5432';
-      $sDbName = 'postgres';
+      $sDbName = 'trabalhofinal';
       $sUser = 'postgres';
       $sPassword = 'postgres';
 
@@ -14,12 +14,12 @@ function conexao() {
       return $oConexao = pg_connect($sConexao);
 }
 
-function isIssetPage() {
-      if (isset($_GET['pg'])) { 
-            header('Location: '. $_GET['pg'].'.php');
+function carregaPagina($sPagina) { //Passa a URL como parâmetro.
+      if (!include_once $sPagina . '.php') {    // Se n?o for encontrada a página a mensagem de erro será disparada.
+            echo '<h1 id="erro">ERRO 404</h1>';
+            echo '<h4 id="msgerro">Página não encontrada!</h4>';
       }
 }
-  
 
 function getHeadPage() {
       return new Head(['<meta charset="windows-1252">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<title>Desenvolvimento Web II</title>',
@@ -27,10 +27,10 @@ function getHeadPage() {
 }
 
 function getMenuPrincipal() {
-      $sHrefHome = new Href('home.php', 'Home');
+      $sHrefHome = new Href('?pg=home', 'Home');
       $sItemHome = new Li([], $sHrefHome);
 
-      $sHrefCadastro = new Href('usuarios.php', 'Cadastros e Consultas');
+      $sHrefCadastro = new Href('?pg=usuarios', 'Cadastros e Consultas');
       $sItemCadastro = new Li([], $sHrefCadastro);
 
       $sHrefQuemSomos = new Href('#', 'Quem somos');
@@ -63,11 +63,10 @@ function montaMenuCadastro() {
       $aCamposMenuPrincipal = [];
               
       foreach (getCadastrosMenu() as $value) {
-          $sHref= new Href('?pg=' . strtolower($value[2]),  $value[1]);
+          $sHref= new Href('index.php?pg=' . strtolower($value[2]),  $value[1]);
           $aCamposMenuPrincipal[] = new Li([], $sHref);
       }
 
-      $sHref= new Href('?pg=' . strtolower($value[2]),  $value[1]);
       $sUl   = new Ul($aCamposMenuPrincipal);
       $sDivNavMenu = new Div(['id' => 'navMenu'], [$sUl]);
 
@@ -92,8 +91,9 @@ function criaConsulta($aArrayPopulado, $aCabecalho, $sPage) {
                         $steste .= '<td>' . $j . '</td>';
                   }
         
-                  $steste .= '<td><a href="'.$sPage.'.php?pg=&delete=' . $iIndiceDelete . '">Deletar</a></td>';
-                  $steste .= '<td><a href="'.$sPage.'.php?pg=&alterar=' . $iIndiceAlterar . '">Alterar</a></td>';    
+                  $steste .= '<td><a href="index.php?pg=' . $_GET['pg'] . '&delete=' . $iIndiceDelete . '">Deletar</a></td>';
+                  $steste .= '<td><a href="index.php?pg=' . $_GET['pg'] . '&alterar=' . $iIndiceAlterar . '">Alterar</a></td>';    
+
                   $steste .= '</tr>'; 
             }
             $steste .= '</table>';

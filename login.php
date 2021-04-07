@@ -44,6 +44,7 @@ function getSubmit() {
       ]);
 }
 
+
 if (isset($_POST['useremail']) && !empty($_POST['useremail']) && isset($_POST['password']) && !empty($_POST['password'])) {
       $sEmail = $_POST['useremail'];
       $sSenha = $_POST['password'];
@@ -55,13 +56,18 @@ if (isset($_POST['useremail']) && !empty($_POST['useremail']) && isset($_POST['p
                   session_start();
                   $_SESSION['usucodigo'] = $aUsuarios[0][0];
                   $_SESSION['usunome'] = $aUsuarios[0][1];
-                  header("Location: home.php");
+                  header("Location: index.php?pg=home");
             }
       } else {
             echo '<br>';
             echo 'Usuário não encontrado';
       }
 } 
+
+$sHead = new Head(['<meta charset="windows-1252">', '<meta name="viewport" content="width=device-width, initial-scale=1.0">', '<title>Desenvolvimento Web II</title>']);
+$sHtml = new Html($sHead, getPageLogin());
+
+echo $sHtml;
        
 ?>
 

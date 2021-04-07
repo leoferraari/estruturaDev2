@@ -21,11 +21,11 @@ function deleteCategoria($iCodigo) {
       $sDelete = 'DELETE FROM trabalhofinal.tbcategoria
                   WHERE catcodigo = (\'' . $iCodigo . '\')';
       if (@pg_query($oConexao, $sDelete)) {
-            $bDeletou = 'sim';
             echo '<br>';
             echo 'Categoria deletada com sucesso!';
+            header("Location: index.php?pg=categorias");
       } 
-      echo $sDelete;
+
       pg_close($oConexao);
 }
 
